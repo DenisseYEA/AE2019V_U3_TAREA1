@@ -10,17 +10,21 @@ module.exports = (wagner) => {
     router.get('/', (req, res) =>
         userCtrl.findAll(req, res));
 
+    router.get('/:id', (req, res) =>
+        userCtrl.findByID(req, res));
+
+    router.get('/login/:email/:password', (req, res) =>
+        userCtrl.login(req, res));
+
     router.delete('/:id', (req, res) =>
         userCtrl.deleteByID(req, res));
 
     router.put('/:id', (req, res) =>
         userCtrl.updateByID(req, res));
 
-    router.get('/:id', (req, res) =>
-        userCtrl.findByID(req, res));
+    router.post('/createUsersCSV', (req, res) =>
+        userCtrl.createUserCSV(req, res));
 
-    router.get('/:email/:password', (req, res) =>
-        userCtrl.findLogin(req, res));
     return router;
 
 }
